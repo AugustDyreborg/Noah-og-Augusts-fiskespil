@@ -5,7 +5,7 @@ function setup()
 	createCanvas(600, 600);
     posVec = new Vector(300,100)
     velVec = new Vector(5,5)
-    Haj = new Hajfisk(posVec,velVec)
+    haj = new Hajfisk(posVec,velVec)
 }
 
 function draw()
