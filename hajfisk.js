@@ -15,15 +15,20 @@ class Hajfisk {
     }
 
     show() {
+        strokeWeight(3)
         fill(this.#color)
         triangle(this.#pos.x, this.#pos.y,
-            this.#pos.x - this.#sizeX, this.#pos.y - this.#sizeY / 2,
-            this.#pos.x - this.#sizeX, this.#pos.y + this.#sizeY / 2);
-        ellipse(this.#pos.x, this.#pos.y, this.#sizeX, this.#sizeY)
-        fill("white")
-        rect(this.#pos.x - this.#sizeX / 8, this.#pos.y - this.#sizeY / 2, this.#sizeX / 8, this.#sizeY)
-        line(this.#pos.x, this.#pos.y, this.#pos.x + this.#sizeX / 2, this.#pos.y)
-        circle(this.#pos.x + this.#sizeX / 4, this.#pos.y - this.#sizeY / 4, 3)
+            (this.#pos.x - this.#sizeX)-20, (this.#pos.y - this.#sizeY / 2)-10,
+            (this.#pos.x - this.#sizeX)-20, (this.#pos.y + this.#sizeY / 2)+10);
+        ellipse(this.#pos.x+20, this.#pos.y, this.#sizeX*2, this.#sizeY*2)
+        
+        triangle(this.#pos.x+30, this.#pos.y+5,
+            this.#pos.x - this.#sizeX+50, (this.#pos.y - this.#sizeY / 2)+5,
+            this.#pos.x - this.#sizeX+50, (this.#pos.y + this.#sizeY / 2)+5);
+
+        fill("red")
+        strokeWeight(10)
+        circle((this.#pos.x + this.#sizeX / 4)+35, this.#pos.y - this.#sizeY / 4, 4)
     }
 
     boundaryCheck() {
