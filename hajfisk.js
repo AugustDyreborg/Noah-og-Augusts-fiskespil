@@ -1,4 +1,4 @@
-class hajFisk {
+class Hajfisk {
     #pos; #vel; #sizeX; #sizeY; #color
     constructor(pos, vel, color) {
         this.#pos = pos;

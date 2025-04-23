@@ -1,8 +1,16 @@
-function setup() {
-  createCanvas(400, 400);
+let  posVec, velVec, haj
+
+function setup() 
+{
+	createCanvas(600, 600);
+    posVec = new Vector(300,100)
+    velVec = new Vector(5,5)
+    Haj = new Hajfisk(posVec,velVec)
 }
 
-function draw() {
-  background(220);
-
+function draw()
+{
+    background("blue")
+    haj.show("red")
+    haj.update()
 }
