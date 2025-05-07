@@ -19,7 +19,6 @@ class Hajfisk {
         this.#color = color;
     }
 
-    update() {
         this.#pos = this.#pos.add(this.#vel);
         this.boundaryCheck();
     }
