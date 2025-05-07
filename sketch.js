@@ -9,30 +9,6 @@ class Vector {
     }
 }
 
-class Fisk {
-    #pos; #vel; #X; #Y;
-    constructor(pos, vel) {
-        this.#pos = pos;
-        this.#vel = vel;
-        this.#X = 60;
-        this.#Y = 30;
-    }
-
-    update() {
-        this.#pos = this.#pos.add(this.#vel);
-        this.boundaryCheck();
-    }
-
-    boundaryCheck() {
-        if ((this.#pos.x > width) || (this.#pos.x < 0)) {
-            this.#vel.x *= -1;
-        }
-        if ((this.#pos.y > height) || (this.#pos.y < 0)) {
-            this.#vel.y *= -1;
-        }
-    }
-}
-
 class Hajfisk {
     #pos; #vel; #sizeX; #sizeY; #color;
     constructor(pos, vel, color) {
@@ -53,39 +29,42 @@ class Hajfisk {
         fill(this.#color);
         triangle(
             this.#pos.x, this.#pos.y,
-            this.#pos.x - this.#sizeX - 20, this.#pos.y - this.#sizeY / 2 - 10,
-            this.#pos.x - this.#sizeX - 20, this.#pos.y + this.#sizeY / 2 + 10
+            (this.#pos.x - this.#sizeX)-20, (this.#pos.y - this.#sizeY / 2)-10,
+            (this.#pos.x - this.#sizeX)-20, (this.#pos.y + this.#sizeY / 2)+10
         );
         ellipse(this.#pos.x + 20, this.#pos.y, this.#sizeX * 2, this.#sizeY * 2);
         
         triangle(
             this.#pos.x + 30, this.#pos.y + 5,
-            this.#pos.x - this.#sizeX + 50, this.#pos.y - this.#sizeY / 2 + 5,
-            this.#pos.x - this.#sizeX + 50, this.#pos.y + this.#sizeY / 2 + 5
+            this.#pos.x - this.#sizeX + 50, (this.#pos.y - this.#sizeY / 2) + 5,
+            this.#pos.x - this.#sizeX + 50, (this.#pos.y + this.#sizeY / 2) + 5
         );
 
         fill("red");
         strokeWeight(10);
-        circle(this.#pos.x + this.#sizeX / 4 + 35, this.#pos.y - this.#sizeY / 4, 4);
+        circle((this.#pos.x + this.#sizeX / 4) + 35, this.#pos.y - this.#sizeY / 4, 4);
     }
 
     boundaryCheck() {
-        if ((this.#pos.x > width) || (this.#pos.x < 0)) {
+        const halfWidth = this.#sizeX + 20; 
+        const halfHeight = this.#sizeY + 10;
+        
+        if ((this.#pos.x + halfWidth > width) || (this.#pos.x - halfWidth < 0)) {
             this.#vel.x *= -1;
         }
-        if ((this.#pos.y > height) || (this.#pos.y < 0)) {
+        if ((this.#pos.y + halfHeight > height) || (this.#pos.y - halfHeight < 0)) {
             this.#vel.y *= -1;
         }
     }
 }
 
-let posVec, velVec, haj;
+let haj;
 
 function setup() {
-    createCanvas(600, 600);
-    posVec = new Vector(300, 100);
-    velVec = new Vector(5, 5);
-    haj = new Hajfisk(posVec, velVec, "gray");
+    createCanvas(windowWidth, windowHeight);
+    const startPos = new Vector(width/2, height/2);
+    const startVel = new Vector(5, 5);
+    haj = new Hajfisk(startPos, startVel, "gray");
 }
 
 function draw() {
